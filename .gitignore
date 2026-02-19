@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Virtual Environment
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment (credenciais — NUNCA versionar)
+.env
+.env.local
+.env.production
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Node
+node_modules/
+
+# Frontend (build)
+frontend/dist/
+
+# Temp
+*.tmp
+*.log

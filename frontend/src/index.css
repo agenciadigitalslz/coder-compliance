@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+/* ── Coder Compliance Design Tokens ──────────────────────── */
+
+:root {
+  /* Surface */
+  --surface-base: #0f172a;
+  --surface-raised: #1e293b;
+  --surface-overlay: rgba(30, 41, 59, 0.6);
+  --surface-card: rgba(30, 41, 59, 0.5);
+
+  /* Border */
+  --border-subtle: #1e293b;
+  --border-default: #334155;
+  --border-hover: #475569;
+
+  /* Text */
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  /* Brand */
+  --brand-primary: #10b981;
+  --brand-primary-hover: #34d399;
+  --brand-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+
+  /* Status */
+  --status-success: #10b981;
+  --status-warning: #eab308;
+  --status-danger: #ef4444;
+  --status-info: #3b82f6;
+
+  /* Spacing */
+  --sidebar-width: 15rem;
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Font */
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* ── Base ─────────────────────────────────────────────────── */
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--surface-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ── Scrollbar ────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* ── Focus Ring (acessibilidade) ──────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+}
+
+/* ── Font Mono Utility ────────────────────────────────────── */
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* ── Score Circle Animation ───────────────────────────────── */
+
+@keyframes score-fill {
+  from { stroke-dasharray: 0 264; }
+}
+
+.score-circle {
+  animation: score-fill 1s var(--transition-slow) forwards;
+}
+
+/* ── Skeleton Loading ─────────────────────────────────────── */
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 0.5rem;
+}
+
+/* ── Fade In ──────────────────────────────────────────────── */
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
