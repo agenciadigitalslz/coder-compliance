@@ -37,19 +37,33 @@ O Coder Compliance é uma plataforma de auditoria contínua que avalia projetos 
 
 ## 🚀 Como Executar
 
-### Pré-requisitos
+### Quick Start (apenas frontend — dados demo)
+
+O dashboard funciona **sem backend** usando dados demo embutidos:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Abra `http://localhost:5173` — os 3 projetos demo serao exibidos automaticamente.
+
+### Setup completo (com backend + Supabase)
+
+#### Pre-requisitos
 
 - Python 3.11+
 - Node.js 20+
 - Conta no [Supabase](https://supabase.com) (plano gratuito)
 
-### 1. Banco de Dados
+#### 1. Banco de Dados
 
 1. Crie um projeto no Supabase
-2. No **SQL Editor**, execute o conteúdo de `backend/supabase_schema.sql`
+2. No **SQL Editor**, execute o conteudo de `backend/supabase_schema.sql`
 3. Copie a connection string do Supabase (Settings → Database → URI)
 
-### 2. Backend
+#### 2. Backend
 
 ```bash
 cd backend
@@ -59,7 +73,7 @@ source .venv/bin/activate   # Linux/Mac
 
 pip install -r requirements.txt
 
-# Configurar variáveis de ambiente
+# Configurar variaveis de ambiente
 cp .env.example .env
 # Editar .env com a connection string do Supabase (DB_URL)
 
@@ -70,9 +84,9 @@ python seed_demo.py
 uvicorn main:app --reload --port 8000
 ```
 
-A API estará disponível em `http://localhost:8000` com documentação em `/docs`.
+A API estara disponivel em `http://localhost:8000` com documentacao em `/docs`.
 
-### 3. Frontend
+#### 3. Frontend
 
 ```bash
 cd frontend
@@ -80,7 +94,7 @@ npm install
 npm run dev
 ```
 
-O dashboard estará disponível em `http://localhost:5173`.
+O dashboard estara disponivel em `http://localhost:5173`.
 
 ---
 
@@ -108,7 +122,8 @@ coder-compliance/
 │       ├── App.tsx                # Rotas (React Router)
 │       ├── main.tsx               # Bootstrap + ErrorBoundary
 │       ├── types/                 # Interfaces TypeScript
-│       ├── services/              # Client HTTP (fetch wrapper)
+│       ├── data/                 # Dados demo embutidos (NAO DELETAR)
+│       ├── services/              # Client HTTP (fetch wrapper + fallback demo)
 │       ├── components/
 │       │   ├── ui/                # Button, Card, Badge, Spinner, Table
 │       │   ├── layout/            # Sidebar, Header, PageContainer
@@ -170,6 +185,24 @@ Projeto desenvolvido como trabalho prático da disciplina de **Engenharia de Sof
 
 ---
 
-## 📄 Licença
+## ⚠️ Dados Demo — NAO DELETAR
 
-Projeto acadêmico. Todos os direitos reservados.
+O dashboard inclui **dados demo permanentes** embutidos no frontend para garantir que o projeto funcione em apresentacoes academicas sem dependencia de backend ou banco de dados externo.
+
+| Empresa | Stack | Score Final |
+|---------|-------|-------------|
+| **Conduit** | node-express | 88.9% (Bom) |
+| **HealthTrack** | python-fastapi | 77.8% (Bom) |
+| **EduConnect** | react-django | 94.4% (Excelente) |
+
+**Arquivos protegidos** (NAO remover):
+- `frontend/src/data/demo-data.ts` — Dados das 3 empresas, 18 execucoes, resultados de testes
+- `backend/seed_demo.py` — Script para popular o Supabase com os mesmos dados
+
+Estes dados sao utilizados na apresentacao do PPS (Pratica Profissional Supervisionada) da UEMA e devem permanecer intactos.
+
+---
+
+## 📄 Licenca
+
+Projeto academico. Todos os direitos reservados.
